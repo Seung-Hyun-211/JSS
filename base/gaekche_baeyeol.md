@@ -5,7 +5,35 @@
 
 ### 코드
 ```
+//객체 생성
+console.log(`vUser Hoisting : ${vUser}`);
+//console.log(`lUser Hoisting : ${lUser}`); //Cannot access 'lUser' before initialization
+//console.log(`vUser Hoisting : ${cUser}`); //Cannot access 'cUser' before initialization
+
 //const 객체, 속성 : userName, age
+
+//var, let 업데이트 가능하며 재선언도 가능
+var vUser = {
+    userName: "Charlie",
+    age: 45
+};
+vUser.userName = "Cat";
+
+var vUser = {
+    userName: "Capybara",
+    age: 4
+}
+
+let lUser = {
+    userName: "Bob",
+    age: 35
+};
+lUser.age = 37;
+lUser = {
+    userName: "Boo",
+    age: 39
+};
+
 const cUser = {
     userName: "Alice",
     age: 25
@@ -19,30 +47,63 @@ cUser.age = 27;
 //     userName: "Ace",
 //     age: 25
 // }
+```
 
-//let, var 또한 업데이트 가능하며 재선언도 가능
-let lUser = {
-    userName: "Bob",
-    age: 35
-};
-lUser.age = 37;
-lUser = {
-    userName: "Boo",
-    age: 35
-};
+### 출력
+```
+vUser Hoisting : undefined
+vUser : Capybara , 4
+lUser : Boo , 39
+cUser : Alice , 27
+userName : Alice, age : 27
+lName : Boo, lAge : 39
+userName : Capybara, age : 4, phoneNum : undefined
+```
 
-var vUser = {
-    userName: "Charlie",
-    age: 45
-};
+## 배열 기초
+- 배열은 Array **객체**이다.
+- 크기 조정이 가능하며 다양한 형식을 혼합하여 저장할 수 있다.  
+  (형식화 배열이 따로 있다.)
+- 정수 인덱스로 접근이 가능하다.
+- 복사연산은 얕은 복사이다.
+    
+### 코드
+```
+//배열
+//대괄호 [ ], Array 생성자, 형식화 배열
+const arr1 = [1, "kim", 3.7];
+const arr2 = new Array(4, "lee", 6.5);
+const arr3 = new Int16Array([1, 2, 3]);
+
+//타입, 출력
+console.log(typeof (arr1), arr1);
+console.log(typeof (arr3), arr3);
+
+//요소 접근
+console.log(`nums1[0] : ${arr1[0]}`);
+
+//길이
+console.log(`length : ${arr1.length}`);
+
+//추가
+arr1.push("fourth"); //뒤
+arr1.unshift(0); //앞
+console.log(arr1);
+
+//제거
+arr2.pop(); //뒤
+arr2.shift(); //앞
+console.log(arr2);
 ```
 ### 출력
 ```
-userName : Alice, age : 27
-lName : Boo, lAge : 35
-userName : Charlie, age : 45, phoneNum : undefined
+object [ 1, 'kim', 3.7 ]
+object Int16Array(3) [ 1, 2, 3 ]
+nums1[0] : 1
+length : 3
+[ 0, 1, 'kim', 3.7, 'fourth' ]
+[ 'lee' ]
 ```
-## 배열
 
 ## 구조 분해
 
